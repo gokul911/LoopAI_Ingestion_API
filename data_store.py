@@ -10,7 +10,6 @@ batch_queue = []
 def add_ingestion(ingestion_id, batches):
     ingestions[ingestion_id] = {
         "created_time": time.time(),
-        "status": "yet_to_start",
         "batches": batches
     }
 
@@ -30,5 +29,6 @@ def get_status(ingestion_id):
     return {
         "ingestion_id": ingestion_id,
         "status": status,
-        "batches": [batch.dict() for batch in ingestion["batches"]]
+        "batches": [batch.dict() for batch in ingestion["batches"]],
+        "created_time": ingestion["created_time"]
     }
